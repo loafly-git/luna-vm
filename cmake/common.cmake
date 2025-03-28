@@ -2,7 +2,7 @@
 function(luna_package name system)
 message(NOTICE "Finding ${name}")
 if(system)
-    find_package(name REQUIRED)
+    find_package(${name} REQUIRED)
 else()
     set(path "${CMAKE_SOURCE_DIR}/deps/${name}")
     if(IS_DIRECTORY ${path})
