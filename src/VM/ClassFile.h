@@ -1,7 +1,6 @@
 #include <vector>
 
 #include "Common/Types.h"
-#include "Common/CompilerDefs.h"
 
 namespace Luna
 {
