@@ -1,0 +1,15 @@
+# Set `system` argument true if you want to use system installed lib
+function(luna_package name system)
+message(NOTICE "Finding ${name}")
+if(system)
+    find_package(name REQUIRED)
+else()
+    set(path "${CMAKE_SOURCE_DIR}/deps/${name}")
+    if(IS_DIRECTORY ${path})
+        # EXCLUDE_FROM_ALL ensures that other targets won't be built unless explicitly requested
+        add_subdirectory(${path} EXCLUDE_FROM_ALL)
+    else()
+        message(FATAL_ERROR "Failed to find directory for ${name}!")
+    endif()
+endif()
+endfunction()
