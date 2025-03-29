@@ -5,7 +5,7 @@
 namespace Luna
 {
 
-enum class EConstantType : u8
+enum class EConstantType : uint8
 {
     Class              = 7,
     FieldRef           = 9,
@@ -25,7 +25,7 @@ enum class EConstantType : u8
     InvokeDynamic      = 18
 };
 
-enum class EAccessFlag : u16
+enum class EAccessFlag : uint16
 {
     // Both shares these flags
     Public          = 0x0001,
@@ -54,51 +54,51 @@ enum class EAccessFlag : u16
 
 struct ClassFileInfo
 {
-    u32 Magic;
-    u16 MinorVersion;
-    u16 MajorVersion;
+    uint32 Magic;
+    uint16 MinorVersion;
+    uint16 MajorVersion;
 
-    u16 ConstantPoolCount;
+    uint16 ConstantPoolCount;
     typedef struct {
         EConstantType Tag;
-        u8 Info;
+        uint8 Info;
     } ConstantPoolInfo;
     std::vector<ConstantPoolInfo> ConstantPool;
     EAccessFlag AccessFlag;
 
-    u16 ThisClass;
-    u16 SuperClass;
+    uint16 ThisClass;
+    uint16 SuperClass;
 
-    u16 InterfacesCount;
-    std::vector<u16> Interfaces;
+    uint16 InterfacesCount;
+    std::vector<uint16> Interfaces;
 
     typedef struct {
-        u16 AttributeNameIndex;
-        u32 AttributeLength;
-        std::vector<u8> Info;
+        uint16 AttributeNameIndex;
+        uint32 AttributeLength;
+        std::vector<uint8> Info;
     } AttributeInfo;
 
-    u16 FieldsCount;
+    uint16 FieldsCount;
     typedef struct {
         EAccessFlag AccessFlags;
-        u16 NameIndex;
-        u16 DescriptorIndex;
-        u16 AttributesCount;
+        uint16 NameIndex;
+        uint16 DescriptorIndex;
+        uint16 AttributesCount;
         std::vector<AttributeInfo> Attributes;
     } FieldInfo;
     std::vector<FieldInfo> Fields;
 
-    u16 MethodsCount;
+    uint16 MethodsCount;
     typedef struct {
         EAccessFlag AccessFlags;
-        u16 NameIndex;
-        u16 DescriptorIndex;
-        u16 AttributesCount;
+        uint16 NameIndex;
+        uint16 DescriptorIndex;
+        uint16 AttributesCount;
         std::vector<AttributeInfo> Attributes;
     } MethodInfo;
     std::vector<MethodInfo> Methods;
 
-    u16 AttributesCount;
+    uint16 AttributesCount;
     std::vector<AttributeInfo> Attributes;
 };
 
