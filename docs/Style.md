@@ -11,7 +11,6 @@ These rules mostly apply to C++.
 <a name="indentation"/>
 
 ## Indentation
------
 Use 4 spaces, do **not** use tabs.
 
 When writing multiline function arguments, try to keep them in the same column as much as possible:
@@ -39,7 +38,6 @@ This also applies when passing arguments.
 <a name="naming"/>
 
 ## Naming
------
 All code, files, directories and comments should be written in English.
 
 Everything is generally in **PascalCase** (every first letter of a word capitalized). With the exception of macros and certain type aliases.
@@ -52,7 +50,6 @@ Everything is generally in **PascalCase** (every first letter of a word capitali
 <a name="general"/>
 
 ## General
------
 - Try your best to keep a line under 80 columns
   - If it makes readibility worse, you're allowed to ignore this.
 - Encapsulate everything within the `Luna` namespace.
@@ -77,13 +74,11 @@ Everything is generally in **PascalCase** (every first letter of a word capitali
 <a name="stl"/>
 
 ## STL
------
 (TODO)
 
 <a name="include"/>
 
 ## Include
------
 You should always **include what you need**.<br>
 Do NOT rely on other headers that is including what you need, be clear of what you are using.
 
@@ -119,7 +114,6 @@ Example:
 <a name="headers"/>
 
 ## Headers
------
 Write `#pragma once` at the beginning of header files.
 
 Keep implementation details **out** from headers. Headers are public facing and should not expose internal behavior.
