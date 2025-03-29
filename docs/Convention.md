@@ -76,7 +76,17 @@ Everything is generally in **PascalCase** (every first letter of a word capitali
 <a name="stl"/>
 
 ## STL
-(TODO)
+The usage of STL is allowed *but limited*.
+
+Luna aims to be **exception-free** as a library, and not all STL libraries are safe from exceptions.<br>
+As of right now I haven't fully decided due to how early the codebase is.
+
+But here is the general outline:
+- Use containers from STL
+  - For the commonly used `std::vector` try to properly check bounds, or
+  - preallocate using `reserve()` to avoid allocation exceptions.
+- `std::string` may be safe to use, but be aware of user inputs (arguments, configurations).
+- If a library relies heavily on exceptions, either avoid them or find a workaround.
 
 <a name="include"/>
 
