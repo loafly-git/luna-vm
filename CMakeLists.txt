@@ -4,9 +4,13 @@ include(cmake/common.cmake)
 
 project(lunavm)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+set(CMAKE_CXX_EXTENSIONS FALSE)
+
 option(USE_SYSTEM_LIBZIP "Whether to use system installed libzip" OFF)
 
-string(APPEND CMAKE_CXX_FLAGS "-Wall -Wextra")
+string(APPEND CMAKE_CXX_FLAGS "-Wall -Wextra -fvisibility=hidden")
 
 # We don't want to set these if included via add_subdirectory
 if(PROJECT_IS_TOP_LEVEL)
