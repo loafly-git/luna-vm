@@ -1,12 +1,14 @@
 These rules mostly apply to C++.
 
 ##### Table of Contents
-[Indentation](#indentation)<br>
-[Naming](#naming)<br>
-[General](#general)<br>
-[STL](#stl)<br>
-[Include](#include)<br>
-[Headers](#headers)<br>
+- Styling
+  - [Indentation](#indentation)<br>
+  - [Naming](#naming)<br>
+  - [General](#general)<br>
+  - [Include](#include)<br>
+  - [Headers](#headers)<br>
+- Design
+  - [STL](#stl)<br>
 
 <a name="indentation"/>
 
