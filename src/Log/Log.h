@@ -37,20 +37,20 @@ namespace Luna
 } // namespace Luna
 
 #define _LNLOG(level, msg, ...) \
-    Luna::_Log(level, __FILE__, __LINE__, msg __VA_ARGS__)
+    Luna::_Log(level, __FILE__, __LINE__, msg, ##__VA_ARGS__)
 
 #ifdef NDEBUG
     #define LNLOGD(msg, ...) \
-        _LNLOG(Luna::ELogLevel::Debug __VA_ARGS__)
+        _LNLOG(Luna::ELogLevel::Debug, msg, ##__VA_ARGS__)
 #else
     #define LNLOGD(msg, ...)
 #endif
 
 #define LNLOGI(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Info, msg __VA_ARGS__)
+    _LNLOG(Luna::ELogLevel::Info, msg, ##__VA_ARGS__)
 
 #define LNLOGW(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Warning, msg __VA_ARGS__)
+    _LNLOG(Luna::ELogLevel::Warning, msg, ##__VA_ARGS__)
 
 #define LNLOGE(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Error, msg __VA_ARGS__)
+    _LNLOG(Luna::ELogLevel::Error, msg, ##__VA_ARGS__)
