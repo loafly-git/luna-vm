@@ -4,7 +4,9 @@
 #include <string_view>
 #include <utility>
 
-namespace Luna
+#include "Common/Macros.h"
+
+namespace Luna::Log
 {
     enum ELogLevel
     {
@@ -14,16 +16,16 @@ namespace Luna
         Error
     };
 
-    void _LogImplementation(ELogLevel Level,
-                            std::string&& File,
-                            const unsigned int Line,
-                            const std::string&& Message);
+    void LUNA_API _LogImplementation(ELogLevel Level,
+                                     std::string&& File,
+                                     const unsigned int Line,
+                                     const std::string&& Message);
 
     template<typename... TArgs>
     void _Log(ELogLevel Level,
               const char* File,
               const unsigned int Line, 
-              std::string_view Format, 
+              const std::string_view Format, 
               TArgs&&... Args)
     {
         const std::string Text = std::vformat(Format,
@@ -37,20 +39,20 @@ namespace Luna
 } // namespace Luna
 
 #define _LNLOG(level, msg, ...) \
-    Luna::_Log(level, __FILE__, __LINE__, msg, ##__VA_ARGS__)
+    Luna::Log::_Log(level, __FILE__, __LINE__, msg, ##__VA_ARGS__)
 
-#ifdef NDEBUG
+#ifndef NDEBUG
     #define LNLOGD(msg, ...) \
-        _LNLOG(Luna::ELogLevel::Debug, msg, ##__VA_ARGS__)
+        _LNLOG(Luna::Log::ELogLevel::Debug, msg, ##__VA_ARGS__)
 #else
     #define LNLOGD(msg, ...)
 #endif
 
 #define LNLOGI(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Info, msg, ##__VA_ARGS__)
+    _LNLOG(Luna::Log::ELogLevel::Info, msg, ##__VA_ARGS__)
 
 #define LNLOGW(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Warning, msg, ##__VA_ARGS__)
+    _LNLOG(Luna::Log::ELogLevel::Warning, msg, ##__VA_ARGS__)
 
 #define LNLOGE(msg, ...) \
-    _LNLOG(Luna::ELogLevel::Error, msg, ##__VA_ARGS__)
+    _LNLOG(Luna::Log::ELogLevel::Error, msg, ##__VA_ARGS__)

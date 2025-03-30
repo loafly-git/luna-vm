@@ -5,7 +5,9 @@
 #include <string>
 #include <string_view>
 
-using namespace Luna;
+#include "Common/Macros.h"
+
+using namespace Luna::Log;
 
 static inline std::string GetLevelString(ELogLevel Level)
 {
@@ -33,18 +35,17 @@ static inline void TrimPath(std::string& Path)
     Path.erase(Path.find(FullPath), FullPathSize);
 }
 
-void Luna::_LogImplementation(ELogLevel Level,
-                              std::string&& File,
-                              const unsigned int Line,
-                              const std::string&& Message
-)
+void Luna::Log::_LogImplementation(ELogLevel Level,
+                                   std::string&& File,
+                                   const unsigned int Line,
+                                   const std::string&& Message)
 {
     // This function feels a little expensive
     // TODO: Optimize this function?
 
-    const std::string&& LevelString = GetLevelString(Level);
-
     TrimPath(File);
+
+    const std::string&& LevelString = GetLevelString(Level);
 
     // File:Line Level Message
     const char* FormatString = "{}:{} [{}] {}";
