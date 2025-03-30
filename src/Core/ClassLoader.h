@@ -1,13 +1,31 @@
-#include <string>
+#include <memory>
+#include <vector>
 
-#include "ClassFile.h"
+#include "Core/ClassFile.h"
+#include "Common/Types.h"
 
 namespace Luna
 {
 
-namespace ClassLoader
+class BytecodeStream;
+
+class ClassLoader
 {
-    ClassFileInfo LoadFile(std::string path);
+public:
+    enum class EResult
+    {
+        Ok,
+        InvalidBytecodeStream,
+        InvalidClassFile,
+        WrongMagic
+    };
+
+    EResult LoadFromBytecodeStream(BytecodeStream& Stream);
+
+    inline ClassFileInfo& GetClassFileInfo() const;
+
+private:
+    ClassFileInfo _ClassFile{};
 };
 
 }
