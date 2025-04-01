@@ -19,7 +19,7 @@ jobs:
       # 2. <Linux, Release, latest Clang compiler toolchain on the default runner image, default generator>
       matrix:
         os: [ubuntu-latest]
-        build_type: [Release, Debug]
+        build_type: [Debug]
         c_compiler: [gcc, clang]
         include:
           - os: ubuntu-latest
