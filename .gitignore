@@ -1,1 +1,6 @@
+# Build output
 build/
+
+# Doxygen generated files
+docs/html
+docs/latex
