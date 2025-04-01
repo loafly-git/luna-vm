@@ -102,6 +102,7 @@ Always use full paths, even if the files are under the same directory.
 Includes should be grouped in this order
 - Interface to implement _(if any)_
 - Standard library files
+- C includes (standard C, POSIX, etc. _if any_)
 - Third party files
 - Project files
 
@@ -115,6 +116,9 @@ Example:
 #include <bitset>
 #include <ctime>
 #include <deque>
+
+#include <fcntl.h>
+#include <signal.h>
 
 #include <ThirdParty.h>
 
