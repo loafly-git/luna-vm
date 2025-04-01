@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(CMAKE_CXX_EXTENSIONS FALSE)
 
 option(USE_SYSTEM_LIBZIP "Whether to use system installed libzip" OFF)
+option(LUNA_NO_SHARED    "Don't build a shared library" OFF)
 
 string(APPEND CMAKE_CXX_FLAGS "-Wall -Wextra -fvisibility=hidden")
 
