@@ -19,12 +19,14 @@ namespace Luna::Log
 
     void LUNA_API _LogImplementation(ELogLevel Level,
                                      std::string&& File,
+                                     std::string&& Function,
                                      const unsigned int Line,
                                      const std::string&& Message);
 
     template<typename... TArgs>
     void _Log(ELogLevel Level,
               const char* File,
+              const char* Function,
               const unsigned int Line, 
               const std::string_view Format, 
               TArgs&&... Args)
@@ -34,13 +36,14 @@ namespace Luna::Log
 
         _LogImplementation(Level,
                            std::string(File),
+                           std::string(Function),
                            Line,
                            std::move(Text));
     }
 } // namespace Luna::Log
 
 #define _LNLOG(level, msg, ...) \
-    Luna::Log::_Log(level, __FILE__, __LINE__, msg, ##__VA_ARGS__)
+    Luna::Log::_Log(level, __FILE__, __func__, __LINE__, msg, ##__VA_ARGS__)
 
 #ifndef NDEBUG
     #define LNLOGD(msg, ...) \

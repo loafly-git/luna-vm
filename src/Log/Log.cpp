@@ -37,6 +37,7 @@ static inline void TrimPath(std::string& Path)
 
 void Luna::Log::_LogImplementation(ELogLevel Level,
                                    std::string&& File,
+                                   std::string&& Function,
                                    const unsigned int Line,
                                    const std::string&& Message)
 {
@@ -47,10 +48,11 @@ void Luna::Log::_LogImplementation(ELogLevel Level,
 
     const std::string&& LevelString = GetLevelString(Level);
 
-    // File:Line Level Message
-    const char* FormatString = "{}:{} [{}] {}";
+    // File:Line Function Level Message
+    const char* FormatString = "{}:{} {} [{}] {}";
     const auto Args = std::make_format_args(File,
                                             Line,
+                                            Function,
                                             LevelString,
                                             Message);
     const std::string Text = std::vformat(FormatString, Args);
