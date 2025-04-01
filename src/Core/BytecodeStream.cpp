@@ -1,5 +1,6 @@
 #include "BytecodeStream.h"
 
+#include <string>
 #include <vector>
 
 #include "Core/BytecodeStream.h"
