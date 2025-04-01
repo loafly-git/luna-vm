@@ -5,7 +5,7 @@
 #include "Core/BytecodeStream.h"
 #include "Common/Types.h"
 
-using namespace Luna;
+using namespace Luna::Core;
 
 BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
 {

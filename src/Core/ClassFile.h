@@ -2,7 +2,7 @@
 
 #include "Common/Types.h"
 
-namespace Luna
+namespace Luna::Core
 {
 
 enum class EConstantType : uint8
@@ -102,6 +102,6 @@ struct ClassFileInfo
     std::vector<AttributeInfo> Attributes;
 };
 
-} // namespace Luna
+} // namespace Luna::Core
 
 #pragma options align=reset

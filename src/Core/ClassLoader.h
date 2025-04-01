@@ -4,7 +4,7 @@
 #include "Core/ClassFile.h"
 #include "Common/Types.h"
 
-namespace Luna
+namespace Luna::Core
 {
 
 class BytecodeStream;
@@ -28,4 +28,4 @@ private:
     ClassFileInfo _ClassFile{};
 };
 
-}
+} // namespace Luna::Core

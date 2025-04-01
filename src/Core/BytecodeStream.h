@@ -5,7 +5,7 @@
 #include "Common/Macros.h"
 #include "Common/Types.h"
 
-namespace Luna
+namespace Luna::Core
 {
 
 class LUNA_API BytecodeStream
@@ -29,4 +29,4 @@ private:
     bool _Valid;
 };
 
-} // namespace Luna
+} // namespace Luna::Core

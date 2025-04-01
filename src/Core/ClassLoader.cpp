@@ -6,7 +6,7 @@
 #include "Core/BytecodeStream.h"
 #include "Common/Types.h"
 
-using namespace Luna;
+using namespace Luna::Core;
 
 ClassLoader::EResult ClassLoader::LoadFromBytecodeStream(BytecodeStream& Stream)
 {
