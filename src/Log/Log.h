@@ -37,7 +37,7 @@ namespace Luna::Log
                            Line,
                            std::move(Text));
     }
-} // namespace Luna
+} // namespace Luna::Log
 
 #define _LNLOG(level, msg, ...) \
     Luna::Log::_Log(level, __FILE__, __LINE__, msg, ##__VA_ARGS__)

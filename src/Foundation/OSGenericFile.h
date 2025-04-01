@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include "Common/Types.h"
 
 namespace Luna::Foundation
@@ -41,22 +43,22 @@ public:
     virtual int Tell() const = 0;
 };
 
+enum EFilePolicyFlags : uint8
+{
+    //! None
+    None          = 0,
+    //! Prohibit other processes to request a write lock
+    SharedLock    = 1 << 1,
+    //! Request exclusive write access to the file
+    ExclusiveLock = 1 << 2
+};
+
 class IOSGenericFile
 {
 public:
     virtual ~IOSGenericFile()
     {
     }
-
-    enum class EFilePolicyFlags : uint8
-    {
-        //! None
-        None           = 0,
-        //! Disallow other processes to read the file
-        ExclusiveRead  = 1 << 1,
-        //! Disallow other processes to write to the file
-        ExclusiveWrite = 1 << 2
-    };
 
     /**
      * Opens a file.
