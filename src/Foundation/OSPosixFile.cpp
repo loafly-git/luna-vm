@@ -1,5 +1,6 @@
 #include "OSPosixFile.h"
 
+#include <cassert>
 #include <string>
 
 #include <errno.h>
@@ -32,7 +33,10 @@ void PosixFileHandle::Seek(ESeekOrigin Origin, uint32 Offset) const
 
 int PosixFileHandle::Tell() const
 {
-    return 0;
+    assert(FilePtr != nullptr);
+
+    const int Pos = ftell(FilePtr);
+    return Pos;
 }
 
 PosixFileHandle* OSPosixFile::Open(std::string Path,
@@ -56,7 +60,7 @@ PosixFileHandle* OSPosixFile::Open(std::string Path,
         return nullptr;
     }
 
-    bool WithLock = false;
+    bool bWithLock = false;
     struct flock FLock;
 
     FLock.l_whence = SEEK_SET;
@@ -66,14 +70,14 @@ PosixFileHandle* OSPosixFile::Open(std::string Path,
     if(Flags & EFilePolicyFlags::SharedLock)
     {
         FLock.l_type = F_RDLCK;
-        WithLock = true;
+        bWithLock = true;
     } else if(Flags & EFilePolicyFlags::ExclusiveLock)
     {
         FLock.l_type = F_WRLCK;
-        WithLock = true;
+        bWithLock = true;
     }
 
-    if(WithLock)
+    if(bWithLock)
     {
         const int FileNo = fileno(FileHandle->FilePtr);
         // Failing to lock hopefully shouldn't be too much of a problem
