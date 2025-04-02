@@ -41,7 +41,8 @@ bool PosixFileHandle::Read(uint8* Destination, uint32 Amount) const
         return false;
     }
 
-    return true;
+    // Unreachable
+    return false;
 }
 
 static inline int GetOrigin(ESeekOrigin Origin)
