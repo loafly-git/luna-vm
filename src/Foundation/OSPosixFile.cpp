@@ -23,6 +23,24 @@ PosixFileHandle::~PosixFileHandle()
 
 bool PosixFileHandle::Read(uint8* Destination, uint32 Amount) const
 {
+    assert(FilePtr != nullptr);
+
+    const size_t RetVal = fread(Destination, sizeof(uint8), Amount, FilePtr);
+    if(RetVal == Amount)
+    {
+        return true;
+    } else
+    {
+        if(feof(FilePtr))
+        {
+            LNLOGE("fread() failed (unexpected EOF)");
+        } else if(ferror(FilePtr))
+        {
+            LNLOGE("fread() failed");
+        }
+        return false;
+    }
+
     return true;
 }
 
