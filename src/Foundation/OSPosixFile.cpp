@@ -56,6 +56,8 @@ static inline int GetOrigin(ESeekOrigin Origin)
         case ESeekOrigin::End:
             return SEEK_END;
     }
+
+    return 0;
 }
 
 void PosixFileHandle::Seek(ESeekOrigin Origin, uint32 Offset) const
