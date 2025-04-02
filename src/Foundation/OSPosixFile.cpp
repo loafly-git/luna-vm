@@ -26,9 +26,29 @@ bool PosixFileHandle::Read(uint8* Destination, uint32 Amount) const
     return true;
 }
 
+static inline int GetOrigin(ESeekOrigin Origin)
+{
+    switch(Origin)
+    {
+        case ESeekOrigin::Set:
+            return SEEK_SET;
+        case ESeekOrigin::Current:
+            return SEEK_CUR;
+        case ESeekOrigin::End:
+            return SEEK_END;
+    }
+}
+
 void PosixFileHandle::Seek(ESeekOrigin Origin, uint32 Offset) const
 {
+    assert(FilePtr != nullptr);
 
+    const int OriginValue = GetOrigin(Origin);
+
+    if(fseek(FilePtr, Offset, OriginValue) != 0)
+    {
+        LNLOGE("fseek() failed");
+    }
 }
 
 int PosixFileHandle::Tell() const
