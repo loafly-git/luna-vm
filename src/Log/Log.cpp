@@ -23,6 +23,8 @@ static inline std::string GetLevelString(ELogLevel Level)
         LEVEL(Error)
     #undef LEVEL
     }
+
+    return "Unknown";
 }
 
 // This function is a little janky looking...
