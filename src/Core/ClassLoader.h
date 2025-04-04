@@ -2,7 +2,9 @@
 #include <vector>
 
 #include "Core/ClassFile.h"
+#include "Common/Macros.h"
 #include "Common/Types.h"
+
 
 namespace Luna::Core
 {
@@ -20,7 +22,7 @@ public:
         WrongMagic
     };
 
-    EResult LoadFromBytecodeStream(BytecodeStream& Stream);
+    EResult LUNA_API LoadFromBytecodeStream(BytecodeStream& Stream);
 
     inline ClassFileInfo& GetClassFileInfo() const;
 

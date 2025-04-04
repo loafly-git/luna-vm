@@ -5,7 +5,7 @@
 
 #include "Core/BytecodeStream.h"
 #include "Common/Types.h"
-#include "Foundation/OSFile.h"
+#include "Foundation/FileSystem.h"
 #include "Log/Log.h"
 
 using namespace Luna::Core;
@@ -13,9 +13,9 @@ using namespace Luna::Foundation;
 
 BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
 {
-    OSFileHandle* File = OSFile::Open(Path, 
-                                      EFilePolicyFlags::SharedLock);
-
+    FileSystem::Get()->Open(Path,
+                            EFilePolicyFlags::SharedLock);
+/*
     if(File == nullptr)
     {
         return EResult::FileError;
@@ -33,7 +33,7 @@ BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
     {
         return EResult::FileError;
     }
-
+*/
     return EResult::Ok;
 }
 

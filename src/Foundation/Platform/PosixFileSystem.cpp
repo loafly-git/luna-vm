@@ -1,4 +1,4 @@
-#include "OSPosixFile.h"
+#include "PosixFileSystem.h"
 
 #include <cassert>
 #include <string>
@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "Common/Types.h"
 #include "Log/Log.h"
@@ -74,10 +75,13 @@ int PosixFileHandle::Tell() const
     return Pos;
 }
 
-PosixFileHandle* OSPosixFile::Open(std::string Path,
+IFileHandle* PosixFileSystem::Open(std::string Path,
                                    EFilePolicyFlags Flags,
                                    bool bForWrite)
 {
+    // Is file locking really necessary?
+    // Might just get rid of them...
+
     PosixFileHandle* FileHandle = new PosixFileHandle;
 
     std::string Mode = "rb";
@@ -124,4 +128,14 @@ PosixFileHandle* OSPosixFile::Open(std::string Path,
     }
 
     return FileHandle;
+}
+
+bool PosixFileSystem::Exists(std::string Path)
+{
+    if(access(Path.c_str(), F_OK) == 0)
+    {
+        return true;
+    }
+
+    return false;
 }

@@ -53,10 +53,15 @@ enum EFilePolicyFlags : uint8
     ExclusiveLock = 1 << 2
 };
 
-class IOSGenericFile
+class IGenericFileSystem
 {
 public:
-    virtual ~IOSGenericFile()
+    static IGenericFileSystem* Get() { return nullptr; }
+    virtual ~IGenericFileSystem()
+    {
+    }
+
+    virtual void SetParent(std::unique_ptr<IGenericFileSystem> Parent)
     {
     }
 
@@ -67,9 +72,16 @@ public:
      * @param bForWrite Whether or not to open the file in write mode.
      * @return          Will return a non-nullptr pointer if succeeded.
      */
-    static IFileHandle* Open(std::string      Path,
-                             EFilePolicyFlags Flags,
-                             bool             bForWrite = false);
+    virtual IFileHandle* Open(std::string      Path,
+                              EFilePolicyFlags Flags,
+                              bool             bForWrite = false) = 0;
+
+    /**
+     * Check for the existence of a file.
+     * @param  Path Path to the file.
+     * @return true if it exists, false if not.
+     */
+    virtual bool Exists(std::string Path) = 0;
 };
 
 } // namespace Luna::Foundation
