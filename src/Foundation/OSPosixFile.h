@@ -3,6 +3,10 @@
 #include "Common/Types.h"
 #include "Foundation/OSGenericFile.h"
 
+// TODO: Fix OSPosixFile
+// There's no static polymorphism
+// So IOSGenericFile is practically useless
+
 namespace Luna::Foundation
 {
 
@@ -31,7 +35,7 @@ public:
 
     static PosixFileHandle* Open(std::string Path,
                                  EFilePolicyFlags Flags,
-                                 bool bForWrite = false) override;
+                                 bool bForWrite = false);
 
     friend class PosixFileHandle;
 };

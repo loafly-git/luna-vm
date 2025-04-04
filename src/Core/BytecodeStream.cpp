@@ -20,7 +20,7 @@ BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
         return EResult::FileError;
     }
 
-    File->Seek(ESeekOrigin::SEEK_END, 0);
+    File->Seek(ESeekOrigin::End, 0);
     const int Size = File->Tell();
 
     _Buffer.reserve(Size);
