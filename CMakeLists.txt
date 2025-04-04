@@ -31,6 +31,10 @@ else()
     add_compile_definitions(LUNA_BUILD_DSO=1)
 endif()
 
+if(UNIX AND NOT APPLE)
+    add_compile_definitions(LUNA_PLATFORM_LINUX)
+endif()
+
 add_subdirectory(src)
 
 # Install dirs
