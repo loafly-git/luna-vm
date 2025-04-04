@@ -24,7 +24,12 @@ BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
     const int Size = File->Tell();
 
     _Buffer.reserve(Size);
-    File->Read(_Buffer.data(), Size);
+    const bool Success = File->Read(_Buffer.data(), Size);
+
+    if(!Success)
+    {
+        return EResult::FileError;
+    }
 
     return EResult::Ok;
 }

@@ -67,9 +67,9 @@ public:
      * @param bForWrite Whether or not to open the file in write mode.
      * @return          Will return a non-nullptr pointer if succeeded.
      */
-    virtual IFileHandle* Open(std::string      Path,
-                              EFilePolicyFlags Flags,
-                              bool             bForWrite = false) = 0;
+    static IFileHandle* Open(std::string      Path,
+                             EFilePolicyFlags Flags,
+                             bool             bForWrite = false);
 };
 
 } // namespace Luna::Foundation

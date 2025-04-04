@@ -23,8 +23,6 @@ PosixFileHandle::~PosixFileHandle()
 
 bool PosixFileHandle::Read(uint8* Destination, uint32 Amount) const
 {
-    assert(FilePtr != nullptr);
-
     const size_t RetVal = fread(Destination, sizeof(uint8), Amount, FilePtr);
     if(RetVal == Amount)
     {
@@ -62,8 +60,6 @@ static inline int GetOrigin(ESeekOrigin Origin)
 
 void PosixFileHandle::Seek(ESeekOrigin Origin, uint32 Offset) const
 {
-    assert(FilePtr != nullptr);
-
     const int OriginValue = GetOrigin(Origin);
 
     if(fseek(FilePtr, Offset, OriginValue) != 0)
@@ -74,8 +70,6 @@ void PosixFileHandle::Seek(ESeekOrigin Origin, uint32 Offset) const
 
 int PosixFileHandle::Tell() const
 {
-    assert(FilePtr != nullptr);
-
     const int Pos = ftell(FilePtr);
     return Pos;
 }

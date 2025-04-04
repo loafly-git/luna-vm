@@ -25,13 +25,15 @@ private:
 class OSPosixFile : public IOSGenericFile
 {
 public:
-    ~OSPosixFile();
+    ~OSPosixFile()
+    {
+    };
 
-   PosixFileHandle* Open(std::string Path,
-                         EFilePolicyFlags Flags,
-                         bool bForWrite = false);
+    static PosixFileHandle* Open(std::string Path,
+                                 EFilePolicyFlags Flags,
+                                 bool bForWrite = false) override;
 
-   friend class PosixFileHandle;
+    friend class PosixFileHandle;
 };
 
 } // namespace Luna::Foundation
