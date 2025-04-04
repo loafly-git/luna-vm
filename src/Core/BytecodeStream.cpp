@@ -5,16 +5,33 @@
 
 #include "Core/BytecodeStream.h"
 #include "Common/Types.h"
+#include "Foundation/OSFile.h"
 
 using namespace Luna::Core;
+using namespace Luna::Foundation;
 
 BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
 {
+    OSFileHandle* File = OSFile::Open(Path, 
+                                      EFilePolicyFlags::SharedLock);
+
+    if(File != nullptr)
+    {
+        return EResult::FileError;
+    }
+
+    File->Seek(ESeekOrigin::SEEK_END, 0);
+    const int Size = File->Tell();
+
+    _Buffer.reserve(Size);
+    File->Read(_Buffer.data(), Size);
+
     return EResult::Ok;
 }
 
-bool LUNA_API BytecodeStream::IsBytecodeValid()
+bool BytecodeStream::IsBytecodeValid()
 {
+    // TODO bytecode verification
     return _Valid;
 }
 
