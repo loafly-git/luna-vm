@@ -17,9 +17,9 @@ void FileSystem::Initialize()
     _Root = std::make_unique<NativeFileSystem>();
 }
 
-std::unique_ptr<IGenericFileSystem> FileSystem::_Get()
+IGenericFileSystem* FileSystem::_Get()
 {
-    return _Root;
+    return _Root.get();
 }
 
 void FileSystem::SetFileSystem(std::unique_ptr<IGenericFileSystem> FS)

@@ -16,7 +16,7 @@ public:
     
     int Tell() const override;
 
-    friend class OSPosixFile;
+    friend class PosixFileSystem;
 
 private:
     FILE* FilePtr;

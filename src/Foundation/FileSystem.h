@@ -26,7 +26,7 @@ public:
     }
 
     // Simply getter for the static Get()
-    std::unique_ptr<IGenericFileSystem> LUNA_API _Get();
+    IGenericFileSystem* LUNA_API _Get();
 
     /**
      * Get the filesystem set by @ref SetFileSystem
@@ -34,7 +34,7 @@ public:
      * Note that the top of the hierarchy will always be the native fs
      * @return The object deriving IGenericFileSystem
      */
-    static LUNA_API std::unique_ptr<IGenericFileSystem> Get()
+    static LUNA_API IGenericFileSystem* Get()
     {
         return FileSystem::GetSelf()._Get();
     }
