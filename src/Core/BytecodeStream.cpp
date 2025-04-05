@@ -46,6 +46,12 @@ bool BytecodeStream::IsBytecodeValid()
     return _Valid;
 }
 
+#ifdef LUNA_LITTLE_ENDIAN
+#define SWAP_IF_LE(x) Byteswap(x)
+#else
+#define SWAP_IF_LE(x)
+#endif
+
 template<typename T>
 bool BytecodeStream::GetUnsigned(uint32 Index, T& OutValue)
 {
@@ -57,7 +63,7 @@ bool BytecodeStream::GetUnsigned(uint32 Index, T& OutValue)
         return false;
     }
 
-    OutValue = *reinterpret_cast<T*>(&_Buffer.data()[Index]);
+    OutValue = SWAP_IF_LE(*reinterpret_cast<T*>(&_Buffer.data()[Index]));
     return true;
 }
 
