@@ -4,6 +4,6 @@ Experimental implementation of the [Java Virtual Machine](https://en.wikipedia.o
 See [TODO.md](./TODO.md)
 
 # Note
-I'm currently implementing the **Java 8** Virtual Machine spesification.
+I'm currently implementing the **Java 8** Virtual Machine specifications.
 
 Not sure if there's any major changes in the newer versions.
