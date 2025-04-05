@@ -10,6 +10,8 @@
 namespace Luna::Foundation
 {
 
+using FileHandle = IFileHandle;
+
 class FileSystem
 {
 public:
