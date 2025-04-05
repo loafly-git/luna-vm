@@ -56,19 +56,19 @@ Everything is generally in **PascalCase** (every first letter of a word capitali
   - If it makes readibility worse, you're allowed to ignore this.
 - Encapsulate everything within the `Luna` namespace.
 - Put brackets on a newline:
-  - ```cpp
-    // Bad
-    void SomeFunction() {
+```cpp
+// Bad
+void SomeFunction() {
 
-    }
+}
 
-    // Good
-    void SomeFunction()
-    {
+// Good
+void SomeFunction()
+{
 
-    }
-    ```
-  - Do this even for statements that can be in a single line (such as returning from `if`).
+}
+```
+- Do this even for statements that can be in a single line (such as returning from `if`).
 - Break code into smaller functions. Functions should do one thing and one thing only.
   Consider `inline` whenever appropriate, but use them with caution (TODO: why?)
   
