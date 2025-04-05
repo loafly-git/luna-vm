@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 
-#include "Core/BytecodeStream.h"
+#include "Common/Byteswap.h"
 #include "Common/Types.h"
+#include "Core/BytecodeStream.h"
 #include "Foundation/FileSystem.h"
 
 using namespace Luna::Core;
