@@ -64,6 +64,7 @@ public:
 
     virtual void SetParent(std::unique_ptr<IGenericFileSystem> Parent)
     {
+        _Parent = std::move(Parent);
     }
 
     /**
@@ -83,6 +84,8 @@ public:
      * @return true if it exists, false if not.
      */
     virtual bool Exists(std::string Path) = 0;
+private:
+    std::unique_ptr<IGenericFileSystem> _Parent;
 };
 
 } // namespace Luna::Foundation
