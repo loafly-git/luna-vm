@@ -30,6 +30,12 @@ if(ENABLE_CLANG_LTO AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
      add_link_options("-flto")
 endif()
 
+if(CMAKE_CXX_BYTE_ORDER STREQUAL BIG_ENDIAN)
+    add_compile_definitions(LUNA_BIG_ENDIAN)
+ elseif(CMAKE_CXX_BYTE_ORDER STREQUAL LITTLE_ENDIAN)
+    add_compile_definitions(LUNA_LITTLE_ENDIAN)
+endif()
+
 luna_package(libzip ${USE_SYSTEM_LIBZIP})
 
 # Print options
