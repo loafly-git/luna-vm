@@ -10,7 +10,7 @@ namespace Luna::Foundation
 
 enum class ESeekOrigin
 {
-    //! Beginning of the file
+    //! Exactly set indicator position
     Set,
     //! Current
     Current,
