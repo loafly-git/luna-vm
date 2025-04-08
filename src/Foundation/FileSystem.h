@@ -28,7 +28,7 @@ public:
     }
 
     // Simply getter for the static Get()
-    IGenericFileSystem* LUNA_API _Get();
+    IGenericFileSystem* _Get();
 
     /**
      * Get the filesystem set by @ref SetFileSystem
