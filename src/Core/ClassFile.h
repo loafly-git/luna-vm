@@ -50,8 +50,6 @@ enum class EAccessFlag : uint16
     // and probably move this whole thing
 };
 
-#pragma pack(1)
-
 struct ClassFileInfo
 {
     uint32 Magic;
@@ -104,4 +102,6 @@ struct ClassFileInfo
 
 } // namespace Luna::Core
 
-#pragma options align=reset
+
+
+
