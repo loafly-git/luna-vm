@@ -5,7 +5,7 @@
 
 #include "Common/Types.h"
 
-namespace Luna::Foundation
+namespace Luna::Fnd
 {
 
 enum class ESeekOrigin

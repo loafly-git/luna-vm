@@ -7,7 +7,7 @@
 #include "Common/Macros.h"
 #include "Foundation/GenericFileSystem.h"
 
-namespace Luna::Foundation
+namespace Luna::Fnd
 {
 
 using FileHandle = IFileHandle;

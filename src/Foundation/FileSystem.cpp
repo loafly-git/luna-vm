@@ -5,7 +5,7 @@
 
 #include "Foundation/GenericFileSystem.h"
 
-using namespace Luna::Foundation;
+using namespace Luna::Fnd;
 
 #ifdef LUNA_PLATFORM_LINUX
 #include "Foundation/Platform/PosixFileSystem.h"

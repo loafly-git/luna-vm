@@ -10,7 +10,7 @@
 #include "Foundation/FileSystem.h"
 
 using namespace Luna::Core;
-using namespace Luna::Foundation;
+using namespace Luna::Fnd;
 
 BytecodeStream::EResult BytecodeStream::LoadFromFile(std::string Path)
 {

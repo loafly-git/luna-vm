@@ -3,7 +3,7 @@
 #include "Common/Types.h"
 #include "Foundation/GenericFileSystem.h"
 
-namespace Luna::Foundation
+namespace Luna::Fnd
 {
 
 class PosixFileHandle : public IFileHandle

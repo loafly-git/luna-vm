@@ -12,7 +12,7 @@
 #include "Common/Types.h"
 #include "Log/Log.h"
 
-using namespace Luna::Foundation;
+using namespace Luna::Fnd;
 
 PosixFileHandle::~PosixFileHandle()
 {
